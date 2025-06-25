@@ -5,9 +5,9 @@ spring:
   application:
     name: product-service
   datasource:
-    url: jdbc:postgresql://localhost:5432/kasirdb
+    url: 
     username: postgres
-    password: qwerty
+    password: 
     driver-class-name: org.postgresql.Driver
   jpa:
     hibernate:
