@@ -1,0 +1,36 @@
+server:
+  port: 73
+
+spring:
+  application:
+    name: apigateway
+
+  cloud:
+    gateway:
+      discovery:
+        locator:
+          enabled: true
+          lower-case-service-id: true
+      routes:
+        - id: user-service
+          uri: lb://user-service
+          predicates:
+            - Path=/user/**
+        - id: product-service
+          uri: lb://product-service
+          predicates:
+            - Path=/products/**
+        - id: transactionservice
+          uri: lb://transactionservice
+          predicates:
+            - Path=/transactions/**
+        - id: payment-service
+          uri: lb://payment-service
+          predicates:
+            - Path=/payments/**
+
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:72/eureka
